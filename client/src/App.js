@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react'
 function App() {
 
   const [data, setData] = useState([{}])
-
+  //gets the data from the json in the database 
   useEffect(() => {
-    fetch("/members").then(
+    fetch("/task").then(
       res => res.json()
     ).then(
       data => {
@@ -17,13 +17,20 @@ function App() {
 
   return (
     <div>
-      {(typeof data.members === 'undefined') ? (
+      <div className='report-box'>alloted time pomodoroed</div>
+      <div className='music-player'>music</div>
+      <div className='timer-box'>25:00</div>
+
+      <div className='task-box'>      
+        {(typeof data.task === 'undefined') ? (
         <p>loading...</p>
       ) : (
-        data.members.map((member, i) => (
-          <p key={i}>{member}</p>
+        data.task.map((task, i) => (
+          <p key={i}>{task}</p>
         ))
       )}
+      </div>
+
     </div>
   )
 }

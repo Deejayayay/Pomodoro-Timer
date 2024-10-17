@@ -1,12 +1,16 @@
 from flask import Flask
-from flask_cors import CORS
 
 app = Flask(__name__)
 
 #members api route
-@app.route("/members")
-def members():
-    return {"members": ["member1","member2","member3"]}
+@app.route("/task")
+def task():
+    return {
+        "project": ["p1", "p2", "p3"],
+        "task": ["t1","t2","t3"],
+        "completed": [False, True, True],
+        "note": ["n1", "n2", "n3"]
+        }
 
 if __name__ == "__main__":
     app.run(debug=True)
