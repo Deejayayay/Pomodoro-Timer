@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/pomodoro.css'; // Import your CSS here
 
+/*
+ToDO
+fix switching between timers, removing the zero off the short timer
+  -current issue is that when cycling through its not the correct timer
+a way to get the total times you pomodoroed
+
+*/
 const PomodoroTimer = () => {
     const [timeRemaining, setTimeRemaining] = useState(25 * 60); // Default is 25 minutes
     const [isRunning, setIsRunning] = useState(false);

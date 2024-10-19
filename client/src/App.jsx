@@ -4,7 +4,14 @@ import './App.css'
 import axios from 'axios'
 import PomodoroTimer from './components/pomodoro';
 
-
+/**
+ * ToDo
+ * get styling ready
+ * create methods to post to the API
+ * do styling for whole page
+ *  -get a moodboard out and look/ 
+ *      -current inspo is monkey type I want to go for a similar theme as I like the yellow
+ */
 function App() {
   const [count, setCount] = useState(0)
   const [array, setArray] = useState([]);

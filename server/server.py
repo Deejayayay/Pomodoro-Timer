@@ -10,6 +10,12 @@ app = Flask(__name__)#
 #allows cross origins requests
 cors = CORS(app, origins='*')
 
+'''
+ToDO 
+create methods for posting to the api
+create a connecting api that gets statistics
+
+'''
 #api route 
 @app.route("/api/taskdb", methods=['GET'])
 def tasks():
