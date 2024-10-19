@@ -30,7 +30,7 @@ class Person(Base):
 #creates a connection to your database 
                         #creates a relative in memory database 
 engine = create_engine("sqlite:///mydb.db", echo=True, pool_pre_ping=True)
-engine.execute("DROP TABLE IF EXISTS people")
+
 #takes all the classes that extand from base and connects them to the data base
 #creates the tables 
 Base.metadata.create_all(bind=engine)
@@ -39,15 +39,6 @@ Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-person = Person(12123, "jacob", "smith", "f", 5)
-session.add(person)
-session.commit()
 
-p1 = Person(313123, "Hope", "popppy", "m", 36)
-p2 = Person(3123, "pope", "popppy", "f", 26)
-p3 = Person(3113, "slope", "popppy", "f", 16)
-
-session.add(p1)
-session.add(p2)
-session.add(p3)
-session.commit()
+results = session.query(Person).all()
+print(results)
