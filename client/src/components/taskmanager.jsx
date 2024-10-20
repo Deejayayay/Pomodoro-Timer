@@ -60,13 +60,17 @@ function TaskList() {
                 ))}
 
             {/* Input field to add new task */}
+            <div className='input-container'>
             <input
                 type="text"
                 value={task}
                 onChange={(e) => setTask(e.target.value)}
                 placeholder="Enter new task"
             />
-            <button onClick={addTask}>Add Task</button>
+            <button onClick={addTask}>
+                <box-icon name='message-square-add'></box-icon>
+            </button>
+            </div>
         </div>
     );
 }
