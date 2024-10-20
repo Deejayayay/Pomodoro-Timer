@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import '../styles/pomodoro.css'
 
 const PomodoroTimer = () => {
     const [timeRemaining, setTimeRemaining] = useState(25 * 60); // Default is 25 minutes
@@ -76,13 +76,21 @@ const PomodoroTimer = () => {
     return (
         <div className="timer">
             {/* Call the switchTimer function with the timer type as the argument */}            
-            <button onClick={() => switchTimer('pomodoro')}>Pomodoro</button>
-            <button onClick={() => switchTimer('shortBreak')}>Short Break</button>
-            <button onClick={() => switchTimer('longBreak')}>Long Break</button>
+            <button className='timer-btn' onClick={() => switchTimer('pomodoro')}>Pomodoro</button>
+            <button className='timer-btn' onClick={() => switchTimer('shortBreak')}>Short Break</button>
+            <button className='timer-btn' onClick={() => switchTimer('longBreak')}>Long Break</button>
+            
             <h1>{formatTime(timeRemaining)}</h1>
-            <button onClick={startTimer}>Start</button>
-            <button onClick={stopTimer}>Stop</button>
-            <button onClick={resetTimer}>Reset</button>
+
+            <button onClick={startTimer}>
+                <box-icon name='play' ></box-icon>
+            </button>
+            <button onClick={stopTimer}>
+                <box-icon name='pause'></box-icon>
+            </button>
+            <button onClick={resetTimer}>
+                <box-icon name='reset' ></box-icon>
+            </button>
         </div>
     );
 };
