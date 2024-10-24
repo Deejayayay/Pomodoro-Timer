@@ -7,7 +7,6 @@
 }
 
 * {
-
     box-sizing: border-box;
     border: none;
     outline: none;
@@ -15,7 +14,6 @@
 }
 
 .parent{
-    outline: dashed black;
     display: grid;
     grid-template-areas: 
         "head head head"
@@ -27,11 +25,16 @@
 
 }
 
-h1{
+.header{
     grid-area: head;
+    display: flex;
+    align-items: center;
 
 }
 
+
 .footer{
+    align-self: baseline;
     grid-area: foot;
+    outline: dashed darkgreen;
 }

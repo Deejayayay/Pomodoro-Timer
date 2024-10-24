@@ -4,12 +4,15 @@
     "add add add"
     "task task task"
     ;
+
     grid-area: side;
     border: 1px solid red; 
     border-radius: 10px;
+    min-width: 400px;
+    min-height: 500px;
     max-width: 1150px;
     max-height:  700px;
-    width: 500px; /* Set a fixed width for the container */
+    width: 400px; /* Set a fixed width for the container */
     height: 500px; /* Set a fixed height for the container if needed */
     overflow: auto; /* Allow scrolling if content exceeds the container */
     resize: both; /* Allow resizing both horizontally and vertically */
@@ -18,24 +21,31 @@
     position: relative; /* Required for positioning the resizer */
 }
 
+.task-header{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
 h2{
     grid-area: head;
     position: relative;
 }
+
 .add-task-container{
     grid-area: add;
     display: flex;
-    outline: dashed red;
     width: 100%;
     justify-content: center;
 }
+
 .add-task{
     font-size: 25px;
     background: transparent;
     color: grey;
 }
-.task-list{
 
+.task-list{
     grid-area: task;
 }
 
@@ -49,7 +59,6 @@ li  {
 }
 
 .task{
-
     outline: dashed gainsboro;
     width: 100%;
 }
@@ -69,4 +78,8 @@ li  {
     display: flex;
     justify-content: center;
     outline: dashed darkcyan;
+}
+
+input{
+    background: transparent;
 }

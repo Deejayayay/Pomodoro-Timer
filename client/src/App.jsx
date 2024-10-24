@@ -16,7 +16,10 @@ function App() {
   return (
     <>
     <div className='parent'>
-      <h1>Poro-Timer</h1>
+      <div className='header'>
+        <h1>Simple-Poro</h1>
+      </div>
+ 
       <PomodoroTimer></PomodoroTimer>
       <TaskList></TaskList>
       <div className='footer'>

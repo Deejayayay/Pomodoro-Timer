@@ -10,9 +10,7 @@
     height: 500px;
     border: 1px solid #ccc; /* Optional border for visibility */
     border-radius: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
-
+    margin-left: 10px;
 }
 
 .timer-btn-container{
