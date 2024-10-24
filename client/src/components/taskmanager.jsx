@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/task.css'
-import 'boxicons'
+import '../styles/task.css';
+import 'boxicons';
 
 function TaskList() {
-    const [array, setArray] = useState([]);
+    const [array, setArray] = useState([]);  // Array to store tasks
     const [task, setTask] = useState("");  // Handle a single task input
+    const [showInput, setShowInput] = useState(false);  // State to toggle input container visibility
 
     // Fetch the task list from the API
     const fetchAPI = async () => {
-        const response = await axios.get("http://127.0.0.1:5987/api/taskdb");
-        setArray(response.data.task);
+        try {
+            const response = await axios.get("http://127.0.0.1:5987/api/taskdb");
+            setArray(response.data.task);
+        } catch (error) {
+            console.error("Error fetching tasks:", error);
+        }
     };
 
     // Fetch tasks when component mounts
@@ -25,6 +30,7 @@ function TaskList() {
             console.log("Task Added", response.data);
             setTask("");  // Clear input after adding task
             fetchAPI();  // Re-fetch tasks after adding
+            setShowInput(false);  // Hide input after adding task
         } catch (error) {
             console.error("Error adding task:", error);
         }
@@ -45,32 +51,53 @@ function TaskList() {
 
     return (
         <div className='task-container'>
-            <h1>Tasks</h1>
-                {/* Loop through the array and display each task with delete and edit buttons */}
-                {array.map((task) => (
-                    <li key={task.id}>
-                        {task.name}
-                        <button className='task-btn'>
-                            <box-icon name='message-square-edit'></box-icon>
-                        </button>
-                        <button className='task-btn' onClick={() => deleteTask(task.id)}>
-                            <box-icon name='trash'></box-icon>
-                        </button>
-                    </li>
-                ))}
-
-            {/* Input field to add new task */}
-            <div className='input-container'>
-            <input
-                type="text"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
-                placeholder="Enter new task"
-            />
-            <button onClick={addTask}>
-                <box-icon name='message-square-add'></box-icon>
+        <div className='task-header'>
+            <h2>Tasks</h2>
+        </div>
+        
+        <div className='add-task-container'>
+            <button className='add-task' onClick={() => setShowInput(!showInput)}>
+                <ion-icon name="add-circle-outline"></ion-icon>    
+                <p>{showInput ? 'Cancel' : 'Add Task'}</p>
             </button>
-            </div>
+        </div>
+
+
+            {/* Input container - only shown when showInput is true */}
+            {showInput && (
+                <div className='input-container'>
+
+                    <input
+                        type="text"
+                        value={task}
+                        onChange={(e) => setTask(e.target.value)}
+                        placeholder="Enter new task"
+                    />
+                    <button onClick={addTask}>
+                        <ion-icon name="enter-outline"></ion-icon>
+                    </button>
+                </div>
+            )}
+            
+            <div className='task-list'>
+                <ul>
+                    {array.map((taskItem) => (
+                        <li key={taskItem.id}>
+                            <p className='task'>{taskItem.name}</p>
+
+                            <div className='task-btn-container'>
+                                <button className='task-btn'>
+                                    <ion-icon name="create-outline"></ion-icon>
+                                </button>
+                                <button className='task-btn' onClick={() => deleteTask(taskItem.id)}>
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </button>
+                            </div>
+
+                        </li>
+                    ))}
+                </ul>
+            </div>            
         </div>
     );
 }

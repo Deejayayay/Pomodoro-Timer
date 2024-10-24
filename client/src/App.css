@@ -1,15 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap");
+
 :root{
     background: #323437;
     color: #e2b714;
     font-family: Lexend Peta;
 }
 
-
 * {
-    margin: 0;
-    padding: 0;
+
     box-sizing: border-box;
     border: none;
     outline: none;
+
+}
+
+.parent{
+    outline: dashed black;
+    display: grid;
+    grid-template-areas: 
+        "head head head"
+        "content content side"
+        "foot foot foot";
+    position: relative;
+    grid-template-rows: 50px auto 50px;
+    gap: 10px;
+
+}
+
+h1{
+    grid-area: head;
+
+}
+
+.footer{
+    grid-area: foot;
 }

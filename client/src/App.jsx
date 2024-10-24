@@ -11,11 +11,18 @@ import TaskList from './components/taskmanager';
  *  -get a moodboard out and look/ 
  *      -current inspo is monkey type I want to go for a similar theme as I like the yellow
  */
+
 function App() {
   return (
     <>
+    <div className='parent'>
+      <h1>Poro-Timer</h1>
       <PomodoroTimer></PomodoroTimer>
       <TaskList></TaskList>
+      <div className='footer'>
+        footah
+      </div>
+    </div>
     </>
   )
 }

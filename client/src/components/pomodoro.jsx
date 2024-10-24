@@ -6,6 +6,7 @@ const PomodoroTimer = () => {
     const [isRunning, setIsRunning] = useState(false);
     const [timerType, setTimerType] = useState('pomodoro'); // Could be 'pomodoro', 'shortBreak', 'longBreak'
     const [updating, setUpdating] = useState(false); // To trigger animation class
+    const [clickedButton, setClickedButton] = useState(null);
 
     useEffect(() => {
         let timer;
@@ -16,6 +17,7 @@ const PomodoroTimer = () => {
             }, 1000);
         } else if (timeRemaining === 0) {
             alert(`${timerType === 'pomodoro' ? 'Pomodoro session' : timerType === 'shortBreak' ? 'Short break' : 'Long break'} complete!`);
+            setIsClicked(false);
             resetTimer();
         }
 
@@ -28,27 +30,33 @@ const PomodoroTimer = () => {
         };
     }, [isRunning, timeRemaining, timerType]);
 
-    const startTimer = () => {
+    const startTimer = (buttonId) => {
         if (!isRunning) setIsRunning(true);
+        setClickedButton(buttonId);
     };
 
-    const stopTimer = () => {
+    const stopTimer = (buttonId) => {
         setIsRunning(false);
+        setClickedButton(buttonId);
     };
 
     const resetTimer = (newTimerType = timerType) => {
         switch (newTimerType) {
             case 'pomodoro':
                 setTimeRemaining(25 * 60);
+                setClickedButton(null);
                 break;
             case 'shortBreak':
                 setTimeRemaining(5 * 60);
+
                 break;
             case 'longBreak':
                 setTimeRemaining(15 * 60);
+
                 break;
             default:
                 setTimeRemaining(25 * 60);
+
         }
     };
 
@@ -75,22 +83,34 @@ const PomodoroTimer = () => {
 
     return (
         <div className="timer">
-            {/* Call the switchTimer function with the timer type as the argument */}            
-            <button className='timer-btn' onClick={() => switchTimer('pomodoro')}>Pomodoro</button>
-            <button className='timer-btn' onClick={() => switchTimer('shortBreak')}>Short Break</button>
-            <button className='timer-btn' onClick={() => switchTimer('longBreak')}>Long Break</button>
-            
-            <h1>{formatTime(timeRemaining)}</h1>
+            <div className='timer-btn-container'>
+                <button className='timer-btn' onClick={() => switchTimer('pomodoro')}>Pomodoro</button>
+                <button className='timer-btn' onClick={() => switchTimer('shortBreak')}>Short Break</button>
+                <button className='timer-btn' onClick={() => switchTimer('longBreak')}>Long Break</button>                
+            </div>       
 
-            <button onClick={startTimer}>
-                <box-icon name='play' ></box-icon>
-            </button>
-            <button onClick={stopTimer}>
-                <box-icon name='pause'></box-icon>
-            </button>
-            <button onClick={resetTimer}>
-                <box-icon name='reset' ></box-icon>
-            </button>
+            <div className='time-container'>
+                <header>{formatTime(timeRemaining)}</header>
+            </div>
+
+            <div className='user-btn-container'>
+                <button 
+                  className={`user-btn ${clickedButton === "button1" ? "clicked" : ""}`} 
+                  onClick={() => startTimer("button1")}
+                >
+                  <ion-icon name="play-outline"></ion-icon>
+                </button>
+                <button   
+                  className={`user-btn ${clickedButton === "button2" ? "clicked" : ""}`} 
+                  onClick={() => stopTimer("button2")}
+                >
+                  <ion-icon name="pause-circle-outline"></ion-icon>
+                </button>
+                <button className='user-btn'onClick={resetTimer}>
+                    <ion-icon name="refresh-outline"></ion-icon>
+                </button>
+            </div>
+
         </div>
     );
 };

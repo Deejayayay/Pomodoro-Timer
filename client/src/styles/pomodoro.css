@@ -1,23 +1,93 @@
 .timer{
-    width: 100%;
-    max-width: 850px;
-    background: white;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
+    grid-template-areas: 
+    "timer timer timer"
+    "time time time"
+    "btn btn btn"
+    ;
+
+
+    grid-area: content;
+    height: 500px;
+    border: 1px solid #ccc; /* Optional border for visibility */
     border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+
 }
 
-button {
-    margin-right: 5px;
-    margin-top: 3px;
-    background-color: transparent;
+.timer-btn-container{
+    display: flex;
+    grid-area: timer;
+    justify-content: space-evenly;
 }
 
-h1{
+.timer-btn{
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.4s all ease;
+    background: transparent;
+    margin-top: 10px;
+}
+
+
+.timer-btn:hover{
+    color: #cdcdcd;
+    transition: 0.4s all ease;
+}
+
+.timer-btn:after{
+    content: '';
+    position: absolute;
     width: 100%;
-    padding: 20px 100px;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #0051ff;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+.timer-btn:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.time-container{
+    display: flex;
+    grid-area: time;
+
+    justify-content: center;
+    height: 75%;
+    align-items: center;
+    margin-top: 5px;
+}
+
+header{
+    font-size: 80px;
+}
+
+.user-btn-container{
     display: flex;
     justify-content: center;
-    align-items: center;
-    z-index: 100;
+    grid-area: btn;
+    
+}
+
+.user-btn{
+    font-size: 50px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.user-btn:hover{
+    transform: scale(0.90);
+    transition: 0.5s all ease;
+}
+
+.user-btn.clicked{
+    transform: scale(0.90);
 }

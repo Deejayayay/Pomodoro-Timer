@@ -1,45 +1,72 @@
 .task-container{
-    width: 100%;
-    max-width: 500px;
-    height: 100%;
-    max-height: 662px;
-    background: white;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
+    grid-template-areas: 
+    "head head head"
+    "add add add"
+    "task task task"
+    ;
+    grid-area: side;
+    border: 1px solid red; 
     border-radius: 10px;
-    box-shadow: 5px 10px #888888;
+    max-width: 1150px;
+    max-height:  700px;
+    width: 500px; /* Set a fixed width for the container */
+    height: 500px; /* Set a fixed height for the container if needed */
+    overflow: auto; /* Allow scrolling if content exceeds the container */
+    resize: both; /* Allow resizing both horizontally and vertically */
+    cursor: se-resize; /* Change cursor to indicate resize */
+    box-sizing: border-box;
+    position: relative; /* Required for positioning the resizer */
+}
+
+h2{
+    grid-area: head;
+    position: relative;
+}
+.add-task-container{
+    grid-area: add;
+    display: flex;
+    outline: dashed red;
+    width: 100%;
+    justify-content: center;
+}
+.add-task{
+    font-size: 25px;
+    background: transparent;
+    color: grey;
+}
+.task-list{
+
+    grid-area: task;
+}
+
+li  {
+    display: flex;
+    width: 100%;
+    outline: dashed red;
+    list-style: none;
+    justify-content: flex-end;
+    
+}
+
+.task{
+
+    outline: dashed gainsboro;
+    width: 100%;
+}
+
+.task-btn-container{
+    outline: dashed gainsboro;
+    align-self: flex-end;
 }
 
 .task-btn{
-    margin-right: 5px;
-    margin-top: 3px;
-    background-color: transparent;
-}
-
-li{
-    list-style: none;
     display: flex;
-    align-items: center;
-    background: #edeef0;
-    border-radius: 10px;
-    padding-left: 20px;
-    margin-top: 25px;
-}
-
-h1{
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
+    cursor: pointer;
     justify-content: center;
-    align-items: center;
-    z-index: 100;
 }
 
 .input-container{
     display: flex;
-    align-items: center;
-    background: #edeef0;
-    border-radius: 10px;
-    padding-left: 20px;
-    margin-top: 25px;
+    justify-content: center;
+    outline: dashed darkcyan;
 }
