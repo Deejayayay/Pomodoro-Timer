@@ -86,11 +86,8 @@ function TaskList() {
                             <p className='task'>{taskItem.name}</p>
 
                             <div className='task-btn-container'>
-                                <button className='task-btn'>
-                                    <ion-icon name="create-outline"></ion-icon>
-                                </button>
                                 <button className='task-btn' onClick={() => deleteTask(taskItem.id)}>
-                                    <ion-icon name="trash-outline"></ion-icon>
+                                    <ion-icon className='delete' name="close-circle-outline"></ion-icon>
                                 </button>
                             </div>
 

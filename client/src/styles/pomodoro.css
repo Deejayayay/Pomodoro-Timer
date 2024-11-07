@@ -1,22 +1,16 @@
 .timer{
-    grid-template-areas: 
-    "timer timer timer"
-    "time time time"
-    "btn btn btn"
-    ;
-    
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
     grid-area: content;
     height: 500px;
-    border: 1px solid #ccc; /* Optional border for visibility */
     border-radius: 10px;
-    margin-left: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(15px); /* Blur the background behind */
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid #ffffff10;
 }
 
 .timer-btn-container{
     display: flex;
-    grid-area: timer;
     justify-content: space-evenly;
 }
 
@@ -27,7 +21,6 @@
     cursor: pointer;
     transition: 0.4s all ease;
     background: transparent;
-    margin-top: 10px;
 }
 
 
@@ -57,12 +50,9 @@
 
 .time-container{
     display: flex;
-    grid-area: time;
-
     justify-content: center;
     height: 75%;
     align-items: center;
-    margin-top: 5px;
 }
 
 header{
@@ -72,8 +62,8 @@ header{
 .user-btn-container{
     display: flex;
     justify-content: center;
-    grid-area: btn;
-    
+    border: 2px solid #ffffff10;
+    border-radius: 1em;
 }
 
 .user-btn{

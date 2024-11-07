@@ -1,24 +1,23 @@
 .task-container{
-    grid-template-areas: 
-    "head head head"
-    "add add add"
-    "task task task"
-    ;
-
+    display: flex;
+    flex-direction: column;
     grid-area: side;
-    border: 1px solid red; 
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid #ffffff10;
+    border-radius: 1em;
     min-width: 400px;
     min-height: 500px;
     max-width: 1200px;
-    max-height:  700px;
+    max-height:  500px;
+
+
     width: 400px; /* Set a fixed width for the container */
     height: 500px; /* Set a fixed height for the container if needed */
     overflow: auto; /* Allow scrolling if content exceeds the container */
     resize: both; /* Allow resizing both horizontally and vertically */
-    cursor: se-resize; /* Change cursor to indicate resize */
     box-sizing: border-box;
     position: relative; /* Required for positioning the resizer */
+    scrollbar-width: none;
 }
 
 .task-header{
@@ -27,13 +26,8 @@
     padding-left: 10px;
 }
 
-h2{
-    grid-area: head;
-    position: relative;
-}
 
 .add-task-container{
-    grid-area: add;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -43,43 +37,59 @@ h2{
     font-size: 25px;
     background: transparent;
     color: grey;
+    cursor: pointer;
 }
 
 .task-list{
     grid-area: task;
 }
 
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
 li  {
     display: flex;
     width: 100%;
-    outline: dashed red;
+    gap: 1em;
+    border: 2px solid #ffffff10;
     list-style: none;
+    border-radius: 1em;
     justify-content: flex-end;
     
 }
 
 .task{
-    outline: dashed gainsboro;
     width: 100%;
 }
 
 .task-btn-container{
-    outline: dashed gainsboro;
     align-self: flex-end;
 }
 
 .task-btn{
-    display: flex;
     cursor: pointer;
     justify-content: center;
+    background: transparent;
 }
 
 .input-container{
     display: flex;
+    border-radius: 1em;
     justify-content: center;
-    outline: dashed darkcyan;
+    border: 2px solid #ffffff10;
 }
 
+button {
+    background: transparent;
+}
 input{
     background: transparent;
+}
+
+.middle{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
 }

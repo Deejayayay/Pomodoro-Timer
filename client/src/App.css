@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap");
 
 :root{
-    background: #323437;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
     color: #e2b714;
     font-family: Lexend Peta;
 }
@@ -10,15 +10,12 @@
     box-sizing: border-box;
     border: none;
     outline: none;
-
+    padding: 10px;
 }
 
 .parent{
-    display: grid;
-    grid-template-areas: 
-        "head head head"
-        "content content side"
-        "foot foot foot";
+    display: flex;
+    flex-direction: column;
     position: relative;
     grid-template-rows: 50px auto 50px;
     gap: 10px;
@@ -29,12 +26,20 @@
     grid-area: head;
     display: flex;
     align-items: center;
-
 }
 
 
 .footer{
-    align-self: baseline;
     grid-area: foot;
-    outline: dashed darkgreen;
+    display: flex;
+    align-items: center;
+
+}
+
+.footer-text{
+    font-size: 10px;
+}
+
+img{
+    width: 50px;
 }

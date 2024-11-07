@@ -17,13 +17,22 @@ function App() {
     <>
     <div className='parent'>
       <div className='header'>
-        <h1>Simple-Poro</h1>
+        <h1>Poro-Timer</h1>
       </div>
- 
-      <PomodoroTimer></PomodoroTimer>
-      <TaskList></TaskList>
+    
+      <div className="middle">
+        <PomodoroTimer></PomodoroTimer>
+        <TaskList></TaskList>
+      </div>
+
       <div className='footer'>
-        footah
+        <p className='footer-text'>Created By DeAngelo Ola</p>
+        <a href="https://github.com/Deejayayay">
+          <img src="https://static-00.iconduck.com/assets.00/github-icon-479x512-ljyk25j8.png" alt="github" />
+        </a>
+        <a href="https://www.linkedin.com/in/deangelojoshuaola/">
+          <img src="https://static-00.iconduck.com/assets.00/linkedin-icon-512x512-b5owxava.png" alt="linkedin" />
+        </a>
       </div>
     </div>
     </>
