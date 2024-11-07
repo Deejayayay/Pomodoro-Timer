@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../styles/pomodoro.css'
 
 const PomodoroTimer = () => {
+    const [activeTimer, setActiveTimer] = useState('pomodoro'); // Default active timer
+
+    const handleButtonClick = (timerType) => {
+        setActiveTimer(timerType);
+        switchTimer(timerType);
+    };
+
+
     const [timeRemaining, setTimeRemaining] = useState(25 * 60); // Default is 25 minutes
     const [isRunning, setIsRunning] = useState(false);
     const [timerType, setTimerType] = useState('pomodoro'); // Could be 'pomodoro', 'shortBreak', 'longBreak'
@@ -83,11 +91,26 @@ const PomodoroTimer = () => {
 
     return (
         <div className="timer">
-            <div className='timer-btn-container'>
-                <button className='timer-btn' onClick={() => switchTimer('pomodoro')}>Pomodoro</button>
-                <button className='timer-btn' onClick={() => switchTimer('shortBreak')}>Short Break</button>
-                <button className='timer-btn' onClick={() => switchTimer('longBreak')}>Long Break</button>                
-            </div>       
+        <div className='timer-btn-container'>
+            <button
+                className={`timer-btn ${activeTimer === 'pomodoro' ? 'active' : ''}`}
+                onClick={() => handleButtonClick('pomodoro')}
+            >
+                Pomodoro
+            </button>
+            <button
+                className={`timer-btn ${activeTimer === 'shortBreak' ? 'active' : ''}`}
+                onClick={() => handleButtonClick('shortBreak')}
+            >
+                Short Break
+            </button>
+            <button
+                className={`timer-btn ${activeTimer === 'longBreak' ? 'active' : ''}`}
+                onClick={() => handleButtonClick('longBreak')}
+            >
+                Long Break
+            </button>
+        </div>    
 
             <div className='time-container'>
                 <header>{formatTime(timeRemaining)}</header>

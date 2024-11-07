@@ -29,7 +29,7 @@
     transition: 0.4s all ease;
 }
 
-.timer-btn:after{
+.timer-btn:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -42,7 +42,12 @@
     transition: transform 0.5s ease-out;
 }
 
-.timer-btn:hover::after{
+.timer-btn:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.timer-btn.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
